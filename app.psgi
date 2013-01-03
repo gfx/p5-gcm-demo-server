@@ -18,6 +18,7 @@ use DBI;
 }
 my $db_config = GCMDemo->config->{DBI} || die "Missing configuration for DBI";
 builder {
+    enable "Plack::Middleware::Log::Minimal", autodump => 1;
     enable 'Plack::Middleware::Static',
         path => qr{^(?:/static/)},
         root => File::Spec->catdir(dirname(__FILE__));
